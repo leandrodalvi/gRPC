@@ -8,6 +8,10 @@ message User{
     string email = 3;
 }
 
+message Users{
+    repeated User user = 1;
+}
+
 message UserResultStream{
     string status = 1;
     User user = 2;
@@ -16,8 +20,10 @@ message UserResultStream{
 service UserService{
     rpc AddUser (User) returns (User);
     rpc AddUserVerbose (User) returns (stream UserResultStream);
+    rpc AddUsers(stream User) returns (Users);
+    rpc AddUserStreamBoth (stream User) returns (stream UserResultStream);
 }
 
 
-
+// export PATH="$PATH:$(go env GOPATH)/bin"
 // protoc --proto_path=proto proto/*.proto --go_out=pb --go-grpc_out=pb

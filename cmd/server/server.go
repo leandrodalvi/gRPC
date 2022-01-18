@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	lis, err := net.Listen("tcp", "localhost:10000")
+	lis, err := net.Listen("tcp", "localhost:50051")
 	if err != nil {
 		print("Could not connect: %v", err)
 	}
